@@ -8,7 +8,6 @@
     sprite: _Goobstation/Objects/Fun/tennis_racket.rsi
     state: tennis_racket
   - type: MeleeWeapon
-    animationRotation: -135
     wideAnimationRotation: -135
     damage:
       types:
