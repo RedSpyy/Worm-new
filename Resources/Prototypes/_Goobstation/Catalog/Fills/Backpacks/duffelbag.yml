@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingBackpackDuffelTennisGame
+  name: tennis game bundle
+  description: "Contains all you need to start a tennis match!"
+  components:
+  - type: StorageFill
+    contents:
+    - id: TennisBall
+      amount: 2
+    - id: BaseTennisRacket
+      amount: 4
+    - id: CrayonRainbow
+      amount: 1

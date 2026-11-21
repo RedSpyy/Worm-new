@@ -119,11 +119,11 @@
     - TennisBall
   groupBy: "sports"
 
-#- type: loadout
-#  id: ClothingBackpackDuffelTennisGame
-#  inhand:
-#  - ClothingBackpackDuffelTennisGame
-#  groupBy: "sports"
+- type: loadout
+  id: ClothingBackpackDuffelTennisGame
+  inhand:
+  - ClothingBackpackDuffelTennisGame
+  groupBy: "sports"
 
 # остальное
 - type: loadout
