@@ -13,7 +13,7 @@
   id: Trinkets
   name: loadout-group-trinkets
   minLimit: 0
-  maxLimit: 4 # Wormix-Edit
+  maxLimit: 5 # Wormix-Edit
   loadouts:
   - SpaceLaw # Corvax-HyperLink
   # WL-Changes-Start
