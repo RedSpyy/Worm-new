@@ -151,3 +151,69 @@
   storage:
     back:
     - BarberScissors
+  groupBy: "makeup"
+
+- type: loadout
+  id: HairComb
+  storage:
+    back:
+    - HairComb
+  groupBy: "makeup"
+
+- type: loadout
+  id: PocketMirror
+  storage:
+    back:
+    - PocketMirror
+  groupBy: "makeup"
+
+- type: loadout
+  id: MakeupBrush
+  storage:
+    back:
+    - MakeupBrush
+  groupBy: "makeup"
+
+# карты
+- type: loadout
+  id: PokerCardBoxFilled
+  storage:
+    back:
+    - PokerCardBoxFilled
+  groupBy: "cards"
+
+- type: loadout
+  id: TarotCardDeck
+  storage:
+    back:
+    - TarotCardDeck
+  groupBy: "cards"
+
+# рандом
+- type: loadout
+  id: TreasureCoinIron
+  storage:
+    back:
+    - TreasureCoinIron
+  groupBy: "random"
+
+- type: loadout
+  id: d2Dice
+  storage:
+    back:
+    - d2Dice
+  groupBy: "random"
+
+- type: loadout
+  id: d6Dice
+  storage:
+    back:
+    - d6Dice
+  groupBy: "random"
+
+- type: loadout
+  id: d20Dice
+  storage:
+    back:
+    - d20Dice
+  groupBy: "random"
