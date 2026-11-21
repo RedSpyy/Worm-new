@@ -1,6 +1,10 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using System.Linq;
 using Content.Server.Database;
 using Content.Server.Preferences.Managers;
 using Content.Shared.Administration;
+using Robust.Server.Player; // Wormix
 using Robust.Shared.Console;
 
 namespace Content.Server.Administration.Commands
@@ -11,35 +15,65 @@ namespace Content.Server.Administration.Commands
         [Dependency] private IServerDbManager _dbManager = default!;
         [Dependency] private IServerPreferencesManager _preferenceManager = default!;
 
+        // Wormix start edit
+        [Dependency] private IPlayerLocator _locator = default!;
+        [Dependency] private IPlayerManager _players = default!;
+
+
         public override string Command => "setadminooc";
 
-        public override void Execute(IConsoleShell shell, string argStr, string[] args)
+        public override async void Execute(IConsoleShell shell, string argStr, string[] args)
         {
-            if (shell.Player == null)
+            if (args.Length != 2)
             {
-                shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
+                shell.WriteError(Loc.GetString("shell-wrong-arguments-number-need-specific",
+                    ("properAmount", 2),
+                    ("currentAmount", args.Length)));
                 return;
             }
 
-            if (args.Length < 1)
-                return;
 
-            var colorArg = string.Join(" ", args).Trim();
-            if (string.IsNullOrEmpty(colorArg))
-                return;
+            var player = args[0].Trim();
+            var user = await _locator.LookupIdByNameAsync(player);
 
-            if (!Color.TryFromHex(colorArg, out var color))
+            if (user != null)
             {
-                shell.WriteError(Loc.GetString("shell-invalid-color-hex"));
+                var colorArg = string.Join(" ", args[1]).Trim();
+                if (string.IsNullOrEmpty(colorArg))
+                    return;
+
+                if (!Color.TryFromHex(colorArg, out var color))
+                {
+                    shell.WriteError(Loc.GetString("shell-invalid-color-hex"));
+                    return;
+                }
+
+
+                // Save the DB
+                await _dbManager.SaveAdminOOCColorAsync(user.UserId, color);
+                // Update the cached preference
+                var prefs = _preferenceManager.GetPreferences(user.UserId);
+                prefs.AdminOOCColor = color;
+
                 return;
             }
 
-            var userId = shell.Player.UserId;
-            // Save the DB
-            _dbManager.SaveAdminOOCColorAsync(userId, color);
-            // Update the cached preference
-            var prefs = _preferenceManager.GetPreferences(userId);
-            prefs.AdminOOCColor = color;
+            shell.WriteError(Loc.GetString("shell-cannot-run-command-from-server"));
+
         }
+
+
+        public override CompletionResult GetCompletion(IConsoleShell shell, string[] args)
+        {
+            if (args.Length == 1)
+            {
+                return CompletionResult.FromHintOptions(
+                    _players.Sessions.Select(s => s.Name),
+                    "Can't find");
+            }
+
+            return CompletionResult.Empty;
+        }
+        // Wormix edit end
     }
 }

@@ -10,7 +10,17 @@
 
 Обратите внимание, что некоторые активы лицензированы по некоммерческой лицензии [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) или аналогичным некоммерческим лицензиям, и их необходимо удалить, если вы планируете использовать этот проект в коммерческих целях.
 
+## Сборка
+
+1. Склонируйте этот репозиторий:
+```shell
+git clone https://github.com/Wormix-Station/space-station-14.git
+```
+2. Запустите `RUN_THIS.py` для инициализации подмодулей и скачивания движка:
+```shell
+cd space-station-14
+python RUN_THIS.py
+```
 3. Скомпилируйте проект используя `dotnet build`
 
 Некоторые ассеты лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и авторские права в файле метаданных. [Пример](https://github.com/space-syndicate/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
-](https://github.com/corvax-team/ss14-wl)
