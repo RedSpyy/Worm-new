@@ -121,8 +121,9 @@
 
 - type: loadout
   id: ClothingBackpackDuffelTennisGame
-  inhand:
-  - ClothingBackpackDuffelTennisGame
+  storage:
+    back:
+    - ClothingBackpackDuffelTennisGame
   groupBy: "sports"
 
 # остальное
