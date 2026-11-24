@@ -1,0 +1,6 @@
+- type: latheRecipe
+  parent: BaseWeaponRecipe
+  id: PolymerBaton
+  result: PolymerBaton
+  materials:
+    Plastic: 300
